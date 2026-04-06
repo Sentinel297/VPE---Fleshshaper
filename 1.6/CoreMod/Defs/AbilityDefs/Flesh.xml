@@ -16,7 +16,7 @@
 <path>VPE_FleshmancerSTNL</path>
 <level>1</level>
 <order>2</order>
-<psyfocusCost>0.06</psyfocusCost>
+<psyfocusCost>0.03</psyfocusCost>
 <entropyGain>0</entropyGain>
 </li>
 <li Class="VEF.Abilities.AbilityExtension_Building">
@@ -46,7 +46,7 @@
 <path>VPE_FleshmancerSTNL</path>
 <level>2</level>
 <order>2</order>
-<psyfocusCost>0.15</psyfocusCost>
+<psyfocusCost>0.05</psyfocusCost>
 <entropyGain>0</entropyGain>
 <prerequisites>
 <li>VPE_FleshwallSTNL</li>
@@ -89,7 +89,7 @@
         <path>VPE_FleshmancerSTNL</path>
         <level>3</level>
         <order>1</order>
-        <psyfocusCost>0.30</psyfocusCost>
+        <psyfocusCost>0.09</psyfocusCost>
         <entropyGain>30</entropyGain>
         <prerequisites>
           <li>VPE_FleshbulbSTNL</li>
@@ -215,8 +215,8 @@
 <path>VPE_FleshmancerSTNL</path>
 <level>4</level>
 <order>1</order>
-<psyfocusCost>0.50</psyfocusCost>
-<entropyGain>75</entropyGain>
+<psyfocusCost>0.06</psyfocusCost>
+<entropyGain>30</entropyGain>
 <prerequisites>
 <li>FleshmassHiveSMNSTNL</li>
 </prerequisites>
@@ -248,8 +248,8 @@
 <path>VPE_FleshmancerSTNL</path>
 <level>4</level>
 <order>3</order>
-<psyfocusCost>0.60</psyfocusCost>
-<entropyGain>0</entropyGain>
+<psyfocusCost>0.10</psyfocusCost>
+<entropyGain>60</entropyGain>
 <prerequisites>
 <li>VPE_FleshmancerregenSTNL</li>
 </prerequisites>
@@ -266,88 +266,121 @@
 </VEF.Abilities.AbilityDef>	
 
 <ThingDef ParentName="DrugPillBase">
-<defName>FleshmassHealnodeSTNL</defName>
+	<defName>FleshmassHealnodeSTNL</defName>
 <label>Fleshmass Regenerator</label>
 <description>A mini-fleshmass heart, can be consumed to obtain strong regenerative capabilities for a day.</description>
 <descriptionHyperlinks>
-<HediffDef>TempregenerationSTNL</HediffDef>
+	<HediffDef>TempregenerationSTNL</HediffDef>
 </descriptionHyperlinks>
 <graphicData>
-<texPath>Item/Fleshmass</texPath>
-<graphicClass>Graphic_StackCount</graphicClass>
+	<texPath>Item/Fleshmass</texPath>
+	<graphicClass>Graphic_StackCount</graphicClass>
 </graphicData>
 <rotatable>false</rotatable>
 <statBases>
-<MarketValue>70</MarketValue>
-<Mass>0.01</Mass>
+	<MarketValue>70</MarketValue>
+	<Mass>0.01</Mass>
 </statBases>
 <recipeMaker>
-<recipeUsers>
+	<recipeUsers>
 </recipeUsers>
-<workSpeedStat>DrugCookingSpeed</workSpeedStat>
-<workSkill>Cooking</workSkill>
-<displayPriority>104</displayPriority>
+	<workSpeedStat>DrugCookingSpeed</workSpeedStat>
+	<workSkill>Cooking</workSkill>
+	<displayPriority>104</displayPriority>
 </recipeMaker>
 <costList>
-<InsectJelly>4</InsectJelly>
+	<InsectJelly>4</InsectJelly>
 </costList>
 <techLevel>Ultra</techLevel>
 <minRewardCount>10</minRewardCount>
 <ingestible>
-<drugCategory>Medical</drugCategory>
-<outcomeDoers>
-<li Class="IngestionOutcomeDoer_GiveHediff">
-<hediffDef>TempregenerationSTNL</hediffDef>
-<severity>1</severity>
-</li>
-</outcomeDoers>
+	<preferability>NeverForNutrition</preferability>
+	<!-- <drugCategory>Medical</drugCategory> -->
+	<outcomeDoers>
+		<li Class="IngestionOutcomeDoer_GiveHediff">
+			<hediffDef>TempregenerationSTNL</hediffDef>
+			<severity>1</severity>
+		</li>
+	</outcomeDoers>
 </ingestible>
-<comps>
-<li Class="CompProperties_Drug">
-<chemical>Luciferium</chemical>
-<addictiveness>0</addictiveness>
-<needLevelOffset>0</needLevelOffset>
-<listOrder>1020</listOrder>
-</li>
-</comps>
 <tradeability>None</tradeability>
 <allowedArchonexusCount>50</allowedArchonexusCount>
 </ThingDef>
 
+<RecipeDef>
+	<defName>VPE_Fleshshaper_ImplantRegenerator_STNL</defName>
+	<label>Implant regenerator</label>
+	<description>Implant a fleshmass regenerator into the target.</description>
+	<descriptionHyperlinks>
+		<ThingDef>FleshmassHealnodeSTNL</ThingDef>
+	</descriptionHyperlinks>
+	<jobString>Implanting regenerator.</jobString>
+	<workerClass>VPE_Fleshmass.Recipe_ImplantFleshmass</workerClass>
+	<deathOnFailedSurgeryChance>0</deathOnFailedSurgeryChance>
+	<anesthetize>False</anesthetize>
+	<workAmount>600</workAmount>
+	<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+	<dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
+	<surgeryOutcomeEffect IsNull="True"/>
+	<targetsBodyPart>false</targetsBodyPart>
+	<skillRequirements>
+		<Medicine>0</Medicine>
+	</skillRequirements>
+	<ingredients>
+		<li>
+			<filter>
+				<thingDefs>
+					<li>FleshmassHealnodeSTNL</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>FleshmassHealnodeSTNL</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<!-- <appliedOnFixedBodyParts> -->
+	<!-- <li>Brain</li> -->
+	<!-- </appliedOnFixedBodyParts> -->
+</RecipeDef>
+
 <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-<defName>VPE_FleshmassregenspawnSTNL</defName>
-<label>Summon Fleshmass Regenerator</label>
-<description>Gather biomass and shape it into a mini-heart, the heart can be consumed to obtain enhanced regeneration for a day.</description>
-<iconPath>Item/Fleshmass/Fleshmass</iconPath>
-<abilityClass>VEF.Abilities.Ability_Spawn</abilityClass>
-<castTime>60</castTime>
-<range>16</range>
-<targetMode>Location</targetMode>
-<castSound>VPE_Decoy_Cast</castSound>
-<durationTime>360</durationTime>
-<needsTicking>true</needsTicking>
-<chance>0</chance>
-<modExtensions>
-<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-<path>VPE_FleshmancerSTNL</path>
-<level>5</level>
-<order>1</order>
-<psyfocusCost>0.6</psyfocusCost>
-<entropyGain>150</entropyGain>
-<prerequisites>
-<li>FleshmassSpitterSTNL</li>
-<li>FleshmassHiveSMNSTNL</li>
-</prerequisites>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_Spawn">
-<thing>FleshmassHealnodeSTNL</thing>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosionSmall</effecterDef>
-<maintainForTicks>30</maintainForTicks>
-<scale>1</scale>
-</li>
-</modExtensions>
+	<defName>VPE_FleshmassregenspawnSTNL</defName>
+	<label>Summon Fleshmass Regenerator</label>
+	<description>Gather biomass and shape it into a mini-heart, the heart can be consumed to obtain enhanced regeneration for a day.</description>
+	<iconPath>Item/Fleshmass/Fleshmass</iconPath>
+	<abilityClass>VPE_Fleshmass.Ability_SpawnThing</abilityClass>
+	<castTime>60</castTime>
+	<range>16</range>
+	<targetMode>Location</targetMode>
+	<castSound>VPE_Decoy_Cast</castSound>
+	<durationTime>360</durationTime>
+	<needsTicking>true</needsTicking>
+	<!-- <chance>0</chance> -->
+	<modExtensions>
+		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+			<path>VPE_FleshmancerSTNL</path>
+			<level>5</level>
+			<order>1</order>
+			<psyfocusCost>0.05</psyfocusCost>
+			<entropyGain>75</entropyGain>
+			<prerequisites>
+				<li>FleshmassSpitterSTNL</li>
+				<li>FleshmassHiveSMNSTNL</li>
+			</prerequisites>
+		</li>
+		<li Class="VPE_Fleshmass.ModExt_SummonThing">
+			<thingToSpawn>FleshmassHealnodeSTNL</thingToSpawn>
+			<count>1</count>
+		</li>
+		<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+			<effecterDef>MeatExplosionSmall</effecterDef>
+			<maintainForTicks>30</maintainForTicks>
+			<scale>1</scale>
+		</li>
+	</modExtensions>
 </VEF.Abilities.AbilityDef>
 
 <ThingDef ParentName="BuildingBase">
@@ -418,8 +451,8 @@
 <path>VPE_FleshmancerSTNL</path>
 <level>5</level>
 <order>2</order>
-<psyfocusCost>0.49</psyfocusCost>
-<entropyGain>0</entropyGain>
+<psyfocusCost>0.15</psyfocusCost>
+<entropyGain>60</entropyGain>
 <prerequisites>
 <li>FleshmassSpitterSTNL</li>
 <li>FleshmassHiveSMNSTNL</li>
@@ -461,7 +494,7 @@
         <path>VPE_FleshmancerSTNL</path>
         <level>6</level>
         <order>1</order>
-        <psyfocusCost>0.80</psyfocusCost>
+        <psyfocusCost>0.30</psyfocusCost>
         <entropyGain>250</entropyGain>
         <prerequisites>
           <li>FleshmassMeatNodeSTNL</li>
@@ -501,8 +534,8 @@
         <path>VPE_FleshmancerSTNL</path>
         <level>6</level>
         <order>2</order>
-        <psyfocusCost>0.80</psyfocusCost>
-        <entropyGain>30</entropyGain>
+        <psyfocusCost>0.10</psyfocusCost>
+        <entropyGain>70</entropyGain>
         <prerequisites>
           <li>VPE_MitosisSTNL</li>
         </prerequisites>
@@ -542,8 +575,8 @@
         <path>VPE_FleshmancerSTNL</path>
         <level>6</level>
         <order>3</order>
-        <psyfocusCost>0.30</psyfocusCost>
-        <entropyGain>25</entropyGain>
+        <psyfocusCost>0.05</psyfocusCost>
+        <entropyGain>75</entropyGain>
         <prerequisites>
           <li>VPE_SustenanceTNL</li>
         </prerequisites>
@@ -630,8 +663,8 @@
 <path>VPE_FleshmancerSTNL</path>
 <level>7</level>
 <order>2</order>
-<psyfocusCost>0.80</psyfocusCost>
-<entropyGain>0</entropyGain>
+<psyfocusCost>0.17</psyfocusCost>
+<entropyGain>95</entropyGain>
 <prerequisites>
 <li>VPE_SustenanceTNL</li>
 </prerequisites>
