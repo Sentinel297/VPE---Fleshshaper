@@ -1,82 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Defs>	
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-<defName>VPE_FleshwallSTNL</defName>
-<label>Form Flesh Wall</label>
-<description>Use biomass located in the deep layers of the Rim to form a wall made of flesh.</description>
-<iconPath>UI_Fleshmancer/Abilities/Wall</iconPath>
-<castTime>15</castTime>
-<range>6.9</range>
-<targetMode>Location</targetMode>
-<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
-<needsTicking>true</needsTicking>
-<chance>0</chance>
-<modExtensions>
-<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-<path>VPE_FleshmancerSTNL</path>
-<level>1</level>
-<order>2</order>
-<psyfocusCost>0.03</psyfocusCost>
-<entropyGain>0</entropyGain>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_Building">
-<building>Fleshmass</building>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosionTiny</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>1</scale>
-</li>
-</modExtensions>
-</VEF.Abilities.AbilityDef>
-	
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-<defName>VPE_FleshbulbSTNL</defName>
-<label>Form Fleshbulb</label>
-<description>Use biomass located in the deep layers of the Rim to form a bioluminescent node of flesh.</description>
-<iconPath>UI_Fleshmancer/Abilities/Bulb</iconPath>
-<castTime>15</castTime>
-<range>6.9</range>
-<targetMode>Location</targetMode>
-<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
-<needsTicking>true</needsTicking>
-<chance>0</chance>
-<modExtensions>
-<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-<path>VPE_FleshmancerSTNL</path>
-<level>2</level>
-<order>2</order>
-<psyfocusCost>0.05</psyfocusCost>
-<entropyGain>0</entropyGain>
-<prerequisites>
-<li>VPE_FleshwallSTNL</li>
-</prerequisites>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_Building">
-<building>Fleshbulb</building>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosionTiny</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>1</scale>
-</li>
-</modExtensions>
-</VEF.Abilities.AbilityDef>
-	
-	
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>VPE_FleshmancerregenSTNL</defName>
-    <label>Regenerative Mutation</label>
-    <description>Mutate the flesh inside of the target to grant them a slow regenerative capability.</description>
-    <iconPath>UI_Fleshmancer/Abilities/Mutation</iconPath>
-    <castTime>120</castTime>
-    <targetMode>Pawn</targetMode>
-	<chance>0</chance>
-    <range>14</range>
-	<needsTicking>true</needsTicking>
-<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
-    <castSound>MeatExplosionNormal</castSound>
-	<targetingParameters>
+<Defs>
+	<!-- Level 1 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_Fleshshaper_Ability_Biomutation_STNL</defName>
+		<label>Biomutation</label>
+		<description>Emit a twisted psychic pulse into the target, the affected creature will begin to mutate into an entity of twisted flesh.\n\nThe resulting entity will attack everything and everyone it sees.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Ability_Biomutation</iconPath>
+		<abilityClass>VPE_Fleshmass.Ability_Biomutation</abilityClass>
+		<chance>0</chance>
+		<castTime>60</castTime>
+		<castSound>Psycast_Skip_Pulse</castSound>
+		<range>24.9</range>
+		<radius>0</radius>
+		<needsTicking>true</needsTicking>
+		<goodwillImpact>-100</goodwillImpact>
+		<targetMode>Pawn</targetMode>
+		<targetingParameters>
+			<canTargetLocations>false</canTargetLocations>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetAnimals>true</canTargetAnimals>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetHumans>true</canTargetHumans>
+			<canTargetMechs>true</canTargetMechs>
+			<!-- <canTargetItems>true</canTargetItems> -->
+			<!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
+		</targetingParameters>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>1</level>
+				<order>1</order>
+				<psyfocusCost>0.03</psyfocusCost>
+				<entropyGain>50</entropyGain>
+				<!-- <prerequisites> -->
+				<!-- <li>VPE_Neurophage_NeuralString_STNL</li> -->
+				<!-- </prerequisites> -->
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_FleshwallSTNL</defName>
+		<label>Form flesh wall</label>
+		<description>Shape underground biomass into a wall of twisted flesh.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Wall</iconPath>
+		<castTime>15</castTime>
+		<range>6.9</range>
+		<targetMode>Location</targetMode>
+		<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>1</level>
+				<order>2</order>
+				<psyfocusCost>0.03</psyfocusCost>
+				<entropyGain>0</entropyGain>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Building">
+				<building>Fleshmass</building>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosionTiny</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 2 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_Fleshshaper_Ability_BiomutationPulse_STNL</defName>
+		<label>Biomutation pulse</label>
+		<description>Emit a twisted psychic pulse at the target location, affected creatures will quickly mutate into entities made out of twisted flesh. These entities will assault any living creature they see. \n\nCreatures of the caster's faction are unaffected by this ability.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Ability_BiomutationPulse</iconPath>
+		<abilityClass>VPE_Fleshmass.Ability_Biomutation</abilityClass>
+		<chance>0</chance>
+		<castTime>120</castTime>
+		<castSound>Psycast_Skip_Pulse</castSound>
+		<range>18.9</range>
+		<hasAoE>true</hasAoE>
+		<radius>3.9</radius>
+		<needsTicking>true</needsTicking>
+		<goodwillImpact>-100</goodwillImpact>
+		<targetMode>Location</targetMode>
+		<targetingParameters>
+			<canTargetLocations>true</canTargetLocations>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetAnimals>false</canTargetAnimals>
+			<canTargetPawns>false</canTargetPawns>
+			<canTargetHumans>false</canTargetHumans>
+			<canTargetMechs>false</canTargetMechs>
+			<!-- <canTargetItems>true</canTargetItems> -->
+			<!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
+		</targetingParameters>
+		<targetingParametersForAoE>
+			<canTargetLocations>false</canTargetLocations>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetAnimals>true</canTargetAnimals>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetHumans>true</canTargetHumans>
+			<canTargetMechs>true</canTargetMechs>
+		</targetingParametersForAoE>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>2</level>
+				<order>1</order>
+				<psyfocusCost>0.12</psyfocusCost>
+				<entropyGain>125</entropyGain>
+				<prerequisites>
+					<li>VPE_Fleshshaper_Ability_Biomutation_STNL</li>
+				</prerequisites>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_MutationFleshSTNL</defName>
+		<label>Organ mutation</label>
+		<description>Alters a random organ within the target to turn it into its fleshmass counterpart. The process will induce blood loss in the target.</description>
+		<iconPath>UI_Fleshmancer/Abilities/MutationTwo</iconPath>
+		<castTime>120</castTime>
+		<targetMode>Pawn</targetMode>
+		<range>14.9</range>
+		<needsTicking>true</needsTicking>
+		<abilityClass>VPEFLESHSTNL.Ability_Fleshpart</abilityClass>
+		<castSound>MeatExplosionNormal</castSound>
+		<targetingParameters>
 			<canTargetLocations>False</canTargetLocations>
 			<canTargetSelf>True</canTargetSelf>
 			<canTargetAnimals>True</canTargetAnimals>
@@ -84,404 +133,407 @@
 			<canTargetHumans>True</canTargetHumans>
 			<canTargetMechs>false</canTargetMechs>
 		</targetingParameters>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>VPE_FleshmancerSTNL</path>
-        <level>3</level>
-        <order>1</order>
-        <psyfocusCost>0.09</psyfocusCost>
-        <entropyGain>30</entropyGain>
-        <prerequisites>
-          <li>VPE_FleshbulbSTNL</li>
-        </prerequisites>
-      </li>
-      <li Class="VEF.Abilities.AbilityExtension_Hediff">
-        <hediff>FleshregenerationSTNL</hediff>
-      </li>
-	  <li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosionTiny</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>1</scale>
-</li>
-    </modExtensions>
-  </VEF.Abilities.AbilityDef>
-
-<ThingDef ParentName="BuildingNaturalBase">
-<defName>FleshmassHiveSTNL</defName>
-<label>Fleshmass Hive</label>
-<description>A hive of giant creatures of flesh. It will spawn Fleshbeasts over time.</description>
-<thingClass>Hive</thingClass>
-	<graphicData>
-<texPath>Building/Fleshmass_Hive</texPath>
-<graphicClass>Graphic_Random</graphicClass>
-<drawSize>2</drawSize>
-</graphicData>
-<size>(2,2)</size>
-<uiIconScale>0.65</uiIconScale>
-    <destroyable>true</destroyable>
-    <preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
-<altitudeLayer>Building</altitudeLayer>
-<rotatable>false</rotatable>
-<fillPercent>0.5</fillPercent>
-<statBases>
-<MaxHitPoints>130</MaxHitPoints>
-<Flammability>1.0</Flammability>
-</statBases>
-<receivesSignals>true</receivesSignals>
-<tickerType>Normal</tickerType>
-<building>
-      <isEdifice>true</isEdifice>
-      <isInert>true</isInert>
-      <isTargetable>true</isTargetable>
-      <claimable>true</claimable>
-      <canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
-      <deconstructible>true</deconstructible>
-    </building>
-<pathCost>42</pathCost>
-<blockWind>true</blockWind>
-<passability>PassThroughOnly</passability>
-<comps>
-<li Class="CompProperties_CanBeDormant">
-<startsDormant>true</startsDormant>
-<canWakeUpFogged>false</canWakeUpFogged>
-</li>
-<li Class="CompProperties_WakeUpDormant"/>
-      <li Class="CompProperties_LeaveFilthOnDestroyed">
-        <filthDef>Filth_LooseGround</filthDef>
-        <thickness>2</thickness>
-      </li>
-	  <li Class="CompProperties_SpawnerPawn">
-<spawnablePawnKinds>
-<li>Fingerspike</li>
-<li>Toughspike</li>
-<li>Trispike</li>
-</spawnablePawnKinds>
-<lordJob>LordJob_AssaultColony</lordJob>
-<shouldJoinParentLord>True</shouldJoinParentLord>
-<spawnSound>MeatExplosionSmall</spawnSound>
-<initialPawnsPoints>200</initialPawnsPoints>
-<maxSpawnedPawnsPoints>500</maxSpawnedPawnsPoints>
-</li>
-    </comps>
-</ThingDef>
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-<defName>FleshmassHiveSMNSTNL</defName>
-<label>Form Flesh Hive</label>
-<description>Use biomass located in the deep layers of the Rim to form a hive of flesh creatures.</description>
-<iconPath>Building/Fleshmass_Hive/Fleshmass_heart</iconPath>
-<castTime>15</castTime>
-<range>6.9</range>
-<targetMode>Location</targetMode>
-<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
-<needsTicking>true</needsTicking>
-<chance>0</chance>
-<modExtensions>
-<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-<path>VPE_FleshmancerSTNL</path>
-<level>4</level>
-<order>2</order>
-<psyfocusCost>0.75</psyfocusCost>
-<entropyGain>0</entropyGain>
-<prerequisites>
-<li>VPE_FleshmancerregenSTNL</li>
-</prerequisites>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_Building">
-<building>FleshmassHiveSTNL</building>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosion</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>1</scale>
-</li>
-</modExtensions>
-</VEF.Abilities.AbilityDef>	
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-<defName>VPE_HarbingertreespawnSTNL</defName>
-<label>Form Harbinger Tree</label>
-<description>Gather biomass and shape it into an Harbinger tree.</description>
-<iconPath>UI_Fleshmancer/Abilities/Harbinger</iconPath>
-<abilityClass>VEF.Abilities.Ability_Spawn</abilityClass>
-<castTime>60</castTime>
-<range>16</range>
-<targetMode>Location</targetMode>
-<durationTime>360</durationTime>
-<needsTicking>true</needsTicking>
-<chance>0</chance>
-<modExtensions>
-<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-<path>VPE_FleshmancerSTNL</path>
-<level>4</level>
-<order>1</order>
-<psyfocusCost>0.06</psyfocusCost>
-<entropyGain>30</entropyGain>
-<prerequisites>
-<li>FleshmassHiveSMNSTNL</li>
-</prerequisites>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_Spawn">
-<thing>Plant_TreeHarbinger</thing>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosion</effecterDef>
-<maintainForTicks>30</maintainForTicks>
-<scale>1</scale>
-</li>
-</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-<defName>FleshmassSpitterSTNL</defName>
-<label>Form Fleshmass Spitter</label>
-<description>Use biomass located in the underground layer of the rim to form a Fleshmass Spitter for the colony.</description>
-<iconPath>UI_Fleshmancer/Abilities/Spitter</iconPath>
-<castTime>15</castTime>
-<range>6.9</range>
-<targetMode>Location</targetMode>
-<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
-<needsTicking>true</needsTicking>
-<chance>0</chance>
-<modExtensions>
-<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-<path>VPE_FleshmancerSTNL</path>
-<level>4</level>
-<order>3</order>
-<psyfocusCost>0.10</psyfocusCost>
-<entropyGain>60</entropyGain>
-<prerequisites>
-<li>VPE_FleshmancerregenSTNL</li>
-</prerequisites>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_Building">
-<building>FleshmassSpitter</building>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosion</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>1</scale>
-</li>
-</modExtensions>
-</VEF.Abilities.AbilityDef>	
-
-<ThingDef ParentName="DrugPillBase">
-	<defName>FleshmassHealnodeSTNL</defName>
-<label>Fleshmass Regenerator</label>
-<description>A mini-fleshmass heart, can be consumed to obtain strong regenerative capabilities for a day.</description>
-<descriptionHyperlinks>
-	<HediffDef>TempregenerationSTNL</HediffDef>
-</descriptionHyperlinks>
-<graphicData>
-	<texPath>Item/Fleshmass</texPath>
-	<graphicClass>Graphic_StackCount</graphicClass>
-</graphicData>
-<rotatable>false</rotatable>
-<statBases>
-	<MarketValue>70</MarketValue>
-	<Mass>0.01</Mass>
-</statBases>
-<recipeMaker>
-	<recipeUsers>
-</recipeUsers>
-	<workSpeedStat>DrugCookingSpeed</workSpeedStat>
-	<workSkill>Cooking</workSkill>
-	<displayPriority>104</displayPriority>
-</recipeMaker>
-<costList>
-	<InsectJelly>4</InsectJelly>
-</costList>
-<techLevel>Ultra</techLevel>
-<minRewardCount>10</minRewardCount>
-<ingestible>
-	<preferability>NeverForNutrition</preferability>
-	<!-- <drugCategory>Medical</drugCategory> -->
-	<outcomeDoers>
-		<li Class="IngestionOutcomeDoer_GiveHediff">
-			<hediffDef>TempregenerationSTNL</hediffDef>
-			<severity>1</severity>
-		</li>
-	</outcomeDoers>
-</ingestible>
-<tradeability>None</tradeability>
-<allowedArchonexusCount>50</allowedArchonexusCount>
-</ThingDef>
-
-<RecipeDef>
-	<defName>VPE_Fleshshaper_ImplantRegenerator_STNL</defName>
-	<label>Implant regenerator</label>
-	<description>Implant a fleshmass regenerator into the target.</description>
-	<descriptionHyperlinks>
-		<ThingDef>FleshmassHealnodeSTNL</ThingDef>
-	</descriptionHyperlinks>
-	<jobString>Implanting regenerator.</jobString>
-	<workerClass>VPE_Fleshmass.Recipe_ImplantFleshmass</workerClass>
-	<deathOnFailedSurgeryChance>0</deathOnFailedSurgeryChance>
-	<anesthetize>False</anesthetize>
-	<workAmount>600</workAmount>
-	<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
-	<dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
-	<surgeryOutcomeEffect IsNull="True"/>
-	<targetsBodyPart>false</targetsBodyPart>
-	<skillRequirements>
-		<Medicine>0</Medicine>
-	</skillRequirements>
-	<ingredients>
-		<li>
-			<filter>
-				<thingDefs>
-					<li>FleshmassHealnodeSTNL</li>
-				</thingDefs>
-			</filter>
-			<count>1</count>
-		</li>
-	</ingredients>
-	<fixedIngredientFilter>
-		<thingDefs>
-			<li>FleshmassHealnodeSTNL</li>
-		</thingDefs>
-	</fixedIngredientFilter>
-	<!-- <appliedOnFixedBodyParts> -->
-	<!-- <li>Brain</li> -->
-	<!-- </appliedOnFixedBodyParts> -->
-</RecipeDef>
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_FleshmassregenspawnSTNL</defName>
-	<label>Summon Fleshmass Regenerator</label>
-	<description>Gather biomass and shape it into a mini-heart, the heart can be consumed to obtain enhanced regeneration for a day.</description>
-	<iconPath>Item/Fleshmass/Fleshmass</iconPath>
-	<abilityClass>VPE_Fleshmass.Ability_SpawnThing</abilityClass>
-	<castTime>60</castTime>
-	<range>16</range>
-	<targetMode>Location</targetMode>
-	<castSound>VPE_Decoy_Cast</castSound>
-	<durationTime>360</durationTime>
-	<needsTicking>true</needsTicking>
-	<!-- <chance>0</chance> -->
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_FleshmancerSTNL</path>
-			<level>5</level>
-			<order>1</order>
-			<psyfocusCost>0.05</psyfocusCost>
-			<entropyGain>75</entropyGain>
-			<prerequisites>
-				<li>FleshmassSpitterSTNL</li>
-				<li>FleshmassHiveSMNSTNL</li>
-			</prerequisites>
-		</li>
-		<li Class="VPE_Fleshmass.ModExt_SummonThing">
-			<thingToSpawn>FleshmassHealnodeSTNL</thingToSpawn>
-			<count>1</count>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-			<effecterDef>MeatExplosionSmall</effecterDef>
-			<maintainForTicks>30</maintainForTicks>
-			<scale>1</scale>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<ThingDef ParentName="BuildingBase">
-<defName>MeatNodeSTNL</defName>
-<label>Meat Node</label>
-<description>Periodically spews out twisted meat.</description>
-<graphicData>
-<graphicClass>Graphic_Random</graphicClass>
-<texPath>Things/Building/Fleshmass/Fleshsack</texPath>
-<drawSize>2</drawSize>
-<drawOffset>(0, 0.02, 0)</drawOffset>
-<damageData>
-<rect>(0.3, 0.3, 1.4, 1.4)</rect>
-<scratches>
-<li>Damage/FleshScratch1</li>
-<li>Damage/FleshScratch2</li>
-<li>Damage/FleshScratch3</li>
-</scratches>
-</damageData>
-</graphicData>
-<soundImpactDefault>Fleshmass_Damaged</soundImpactDefault>
-<comps>
-<li Class="CompProperties_Spawner">
-<requiresPower>false</requiresPower>
-<thingToSpawn>Meat_Twisted</thingToSpawn>
-<spawnCount>50</spawnCount>
-<spawnIntervalRange>
-<min>130000</min>
-<max>130000</max>
-</spawnIntervalRange>
-<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
-<showMessageIfOwned>true</showMessageIfOwned>
-</li>
-</comps>
-<altitudeLayer>Building</altitudeLayer>
-<statBases>
-<MarketValue>1500</MarketValue>
-<MaxHitPoints>200</MaxHitPoints>
-<Flammability>1.0</Flammability>
-<Beauty>-10</Beauty>
-<Mass>35</Mass>
-<WorkToBuild>1000</WorkToBuild>
-</statBases>
-<tickerType>Normal</tickerType>
-<size>(2, 2)</size>
-<fillPercent>1.0</fillPercent>
-<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-<passability>Impassable</passability>
-<rotatable>false</rotatable>
-<canOverlapZones>false</canOverlapZones>
-<tradeability>Sellable</tradeability>
-</ThingDef>	
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-<defName>FleshmassMeatNodeSTNL</defName>
-<label>Form Fleshmass Meat Node</label>
-<description>Shape the local biomass into a node of flesh which will spew out twisted meat every 3 days.</description>
-<iconPath>UI_Fleshmancer/Abilities/Sack</iconPath>
-<castTime>15</castTime>
-<range>6.9</range>
-<targetMode>Location</targetMode>
-<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
-<needsTicking>true</needsTicking>
-<chance>0</chance>
-<modExtensions>
-<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-<path>VPE_FleshmancerSTNL</path>
-<level>5</level>
-<order>2</order>
-<psyfocusCost>0.15</psyfocusCost>
-<entropyGain>60</entropyGain>
-<prerequisites>
-<li>FleshmassSpitterSTNL</li>
-<li>FleshmassHiveSMNSTNL</li>
-</prerequisites>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_Building">
-<building>MeatNodeSTNL</building>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosion</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>1</scale>
-</li>
-</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>VPE_MitosisSTNL</defName>
-    <label>Mitosis</label>
-    <description>Separate the target humanoid into two entities of identical composition.</description>
-    <iconPath>UI_Fleshmancer/Abilities/Mitosis</iconPath>
-    <castTime>120</castTime>
-    <targetMode>Pawn</targetMode>
-	<chance>0</chance>
-    <range>14.9</range>
-	<needsTicking>true</needsTicking>
-<abilityClass>VPEFLESHSTNL.Ability_SpawnColonist</abilityClass>
-    <castSound>MeatExplosionNormal</castSound>
-	<targetingParameters>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>2</level>
+				<order>2</order>
+				<psyfocusCost>0.05</psyfocusCost>
+				<entropyGain>75</entropyGain>
+				<prerequisites>
+					<li>VPE_Fleshshaper_Ability_Biomutation_STNL</li>
+					<li>VPE_FleshwallSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VPEFLESHSTNL.Ability_FleshpartMutationExt">
+				<mutations>
+					<li>Tentacle</li>
+					<li>FleshWhip</li>
+					<li>FleshmassLung</li>
+					<li>FleshmassStomach</li>
+				</mutations>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosionTiny</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_FleshbulbSTNL</defName>
+		<label>Form fleshbulb</label>
+		<description>Shape biomass into a bioluminescent bulb of twisted flesh.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Bulb</iconPath>
+		<castTime>15</castTime>
+		<range>6.9</range>
+		<targetMode>Location</targetMode>
+		<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>2</level>
+				<order>2</order>
+				<psyfocusCost>0.05</psyfocusCost>
+				<entropyGain>0</entropyGain>
+				<prerequisites>
+					<li>VPE_FleshwallSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Building">
+				<building>Fleshbulb</building>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosionTiny</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 3 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_FleshmancerregenSTNL</defName>
+		<label>Regenerative mutation</label>
+		<description>Infuse the target with fleshweaving archites. These archites will slowly heal the affected creatures over time.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Mutation</iconPath>
+		<castTime>120</castTime>
+		<targetMode>Pawn</targetMode>
+		<chance>0</chance>
+		<range>14.9</range>
+		<needsTicking>true</needsTicking>
+		<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
+		<castSound>MeatExplosionNormal</castSound>
+		<targetingParameters>
+			<canTargetLocations>False</canTargetLocations>
+			<canTargetSelf>True</canTargetSelf>
+			<canTargetAnimals>True</canTargetAnimals>
+			<canTargetPawns>True</canTargetPawns>
+			<canTargetHumans>True</canTargetHumans>
+			<canTargetMechs>false</canTargetMechs>
+		</targetingParameters>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>3</level>
+				<order>1</order>
+				<psyfocusCost>0.09</psyfocusCost>
+				<entropyGain>30</entropyGain>
+				<prerequisites>
+					<li>VPE_Fleshshaper_Ability_BiomutationPulse_STNL</li>
+					<li>VPE_MutationFleshSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>FleshregenerationSTNL</hediff>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosionTiny</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>FleshmassHiveSMNSTNL</defName>
+		<label>Form flesh hive</label>
+		<description>Accumulate biomass and twist it into a fleshmass hive. Over time, fleshbeasts will emerge from the hive to defend it.</description>
+		<iconPath>Building/Fleshmass_Hive/Fleshmass_heart</iconPath>
+		<castTime>15</castTime>
+		<range>6.9</range>
+		<targetMode>Location</targetMode>
+		<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>3</level>
+				<order>2</order>
+				<psyfocusCost>0.75</psyfocusCost>
+				<entropyGain>0</entropyGain>
+				<prerequisites>
+					<li>VPE_MutationFleshSTNL</li>
+					<li>VPE_FleshbulbSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Building">
+				<building>FleshmassHiveSTNL</building>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosion</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 4 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_FleshmassregenspawnSTNL</defName>
+		<label>Summon fleshmass regenerator</label>
+		<description>Gather biomass and shape it into a miniature fleshmass heart, the heart can be consumed to obtain enhanced regeneration for a day.</description>
+		<iconPath>Item/Fleshmass/Fleshmass</iconPath>
+		<abilityClass>VPE_Fleshmass.Ability_SpawnThing</abilityClass>
+		<castTime>60</castTime>
+		<range>16</range>
+		<targetMode>Location</targetMode>
+		<castSound>VPE_Decoy_Cast</castSound>
+		<durationTime>360</durationTime>
+		<needsTicking>true</needsTicking>
+		<!-- <chance>0</chance> -->
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>4</level>
+				<order>1</order>
+				<psyfocusCost>0.05</psyfocusCost>
+				<entropyGain>75</entropyGain>
+				<prerequisites>
+					<li>VPE_FleshmancerregenSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VPE_Fleshmass.ModExt_SummonThing">
+				<thingToSpawn>FleshmassHealnodeSTNL</thingToSpawn>
+				<count>1</count>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosionSmall</effecterDef>
+				<maintainForTicks>30</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>FleshmassSpitterSTNL</defName>
+		<label>Form fleshmass spitter</label>
+		<description>Accumulate biomass and weave it in the shape of a fleshmass spitter, fleshmass spitter will periodically spit acid on nearby enemies.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Spitter</iconPath>
+		<castTime>15</castTime>
+		<range>6.9</range>
+		<targetMode>Location</targetMode>
+		<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>4</level>
+				<order>3</order>
+				<psyfocusCost>0.10</psyfocusCost>
+				<entropyGain>60</entropyGain>
+				<prerequisites>
+					<li>FleshmassHiveSMNSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Building">
+				<building>FleshmassSpitter</building>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosion</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 5 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_SustenanceTNL</defName>
+		<label>Anomalous sustenance</label>
+		<description>Shape a fleshmass meat node which feeds off psychic energy directly inside of the target, this node will sustain the target's need to eat.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Sustenance</iconPath>
+		<castTime>120</castTime>
+		<targetMode>Pawn</targetMode>
+		<chance>0</chance>
+		<range>14</range>
+		<needsTicking>true</needsTicking>
+		<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
+		<castSound>MeatExplosionNormal</castSound>
+		<targetingParameters>
+			<canTargetLocations>False</canTargetLocations>
+			<canTargetSelf>True</canTargetSelf>
+			<canTargetAnimals>True</canTargetAnimals>
+			<canTargetPawns>True</canTargetPawns>
+			<canTargetHumans>True</canTargetHumans>
+			<canTargetMechs>false</canTargetMechs>
+		</targetingParameters>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>5</level>
+				<order>1</order>
+				<psyfocusCost>0.10</psyfocusCost>
+				<entropyGain>70</entropyGain>
+				<prerequisites>
+					<li>VPE_FleshmassregenspawnSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>SustenanceSTNL</hediff>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosionTiny</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_HarbingertreespawnSTNL</defName>
+		<label>Form harbinger tree</label>
+		<description>Psychically induce the growth of an harbinger tree, this tree will consume the flesh of the deceased to produce twisted meat.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Harbinger</iconPath>
+		<abilityClass>VEF.Abilities.Ability_Spawn</abilityClass>
+		<castTime>60</castTime>
+		<range>16</range>
+		<targetMode>Location</targetMode>
+		<durationTime>360</durationTime>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>5</level>
+				<order>2</order>
+				<psyfocusCost>0.06</psyfocusCost>
+				<entropyGain>30</entropyGain>
+				<prerequisites>
+					<li>VPE_FleshmassregenspawnSTNL</li>
+					<li>FleshmassSpitterSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Spawn">
+				<thing>Plant_TreeHarbinger</thing>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosion</effecterDef>
+				<maintainForTicks>30</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>FleshmassMeatNodeSTNL</defName>
+		<label>Form fleshmass meat node</label>
+		<description>Provoke the growth of a tumorous growth at the target location, this growth will produce chunks of twisted meat over time.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Sack</iconPath>
+		<castTime>15</castTime>
+		<range>6.9</range>
+		<targetMode>Location</targetMode>
+		<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>5</level>
+				<order>3</order>
+				<psyfocusCost>0.15</psyfocusCost>
+				<entropyGain>60</entropyGain>
+				<prerequisites>
+					<li>FleshmassSpitterSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Building">
+				<building>MeatNodeSTNL</building>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosion</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 6 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_Fleshshaper_Ability_Assimilate_STNL</defName>
+		<label>Assimilate</label>
+		<description>Melt and absorb the target creature, absorbing a creature will both fully heal and grant its skill levels to the caster.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Ability_Assimilate</iconPath>
+		<abilityClass>VPE_Fleshmass.Ability_Assimilate</abilityClass>
+		<chance>0</chance>
+		<castTime>60</castTime>
+		<castSound>VPE_AggressiveHeatDump_Cast</castSound>
+		
+		<jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+		<requireLineOfSight>false</requireLineOfSight>
+		<showUndrafted>True</showUndrafted>
+		<distanceToTarget>1.9</distanceToTarget>
+		<range>999999</range>
+		
+		<radius>0</radius>
+		<needsTicking>true</needsTicking>
+		<goodwillImpact>-100</goodwillImpact>
+		<targetMode>Pawn</targetMode>
+		<targetingParameters>
+			<canTargetLocations>false</canTargetLocations>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetAnimals>true</canTargetAnimals>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetHumans>true</canTargetHumans>
+			<canTargetMechs>true</canTargetMechs>
+			<canTargetItems>true</canTargetItems>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>6</level>
+				<order>1</order>
+				<psyfocusCost>0.07</psyfocusCost>
+				<entropyGain>200</entropyGain>
+				<prerequisites>
+					<li>VPE_SustenanceTNL</li>
+				</prerequisites>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>FleshmassSuperHiveSMNSTNL</defName>
+		<label>Form super flesh hive</label>
+		<description>Use biomass located in the deep layers of the Rim to form a hive of Bulbfreaks.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Superhive</iconPath>
+		<castTime>15</castTime>
+		<range>6.9</range>
+		<targetMode>Location</targetMode>
+		<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>6</level>
+				<order>2</order>
+				<psyfocusCost>0.17</psyfocusCost>
+				<entropyGain>95</entropyGain>
+				<prerequisites>
+					<li>FleshmassMeatNodeSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Building">
+				<building>FleshmassSuperHiveSTNL</building>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosion</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 7 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_MitosisSTNL</defName>
+		<label>Mitosis</label>
+		<description>Separate the target humanoid creature into two entities of identical composition.</description>
+		<iconPath>UI_Fleshmancer/Abilities/Mitosis</iconPath>
+		<castTime>120</castTime>
+		<targetMode>Pawn</targetMode>
+		<chance>0</chance>
+		<range>14.9</range>
+		<needsTicking>true</needsTicking>
+		<abilityClass>VPEFLESHSTNL.Ability_SpawnColonist</abilityClass>
+		<castSound>MeatExplosionNormal</castSound>
+		<targetingParameters>
 			<canTargetLocations>False</canTargetLocations>
 			<canTargetSelf>True</canTargetSelf>
 			<canTargetAnimals>False</canTargetAnimals>
@@ -489,194 +541,22 @@
 			<canTargetHumans>True</canTargetHumans>
 			<canTargetMechs>false</canTargetMechs>
 		</targetingParameters>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>VPE_FleshmancerSTNL</path>
-        <level>6</level>
-        <order>1</order>
-        <psyfocusCost>0.30</psyfocusCost>
-        <entropyGain>250</entropyGain>
-        <prerequisites>
-          <li>FleshmassMeatNodeSTNL</li>
-		  <li>VPE_FleshmassregenspawnSTNL</li>
-        </prerequisites>
-      </li>
-	  <li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosionLarge</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>1</scale>
-</li>
-    </modExtensions>
-  </VEF.Abilities.AbilityDef>	
-  
-  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>VPE_SustenanceTNL</defName>
-    <label>Anomalous Sustenance</label>
-    <description>Shape a fleshmass meat node which feeds off psychic energy directly inside of the target, this node will feed the target and negate their need to eat.</description>
-    <iconPath>UI_Fleshmancer/Abilities/Sustenance</iconPath>
-    <castTime>120</castTime>
-    <targetMode>Pawn</targetMode>
-	<chance>0</chance>
-    <range>14</range>
-	<needsTicking>true</needsTicking>
-<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
-    <castSound>MeatExplosionNormal</castSound>
-	<targetingParameters>
-			<canTargetLocations>False</canTargetLocations>
-			<canTargetSelf>True</canTargetSelf>
-			<canTargetAnimals>True</canTargetAnimals>
-			<canTargetPawns>True</canTargetPawns>
-			<canTargetHumans>True</canTargetHumans>
-			<canTargetMechs>false</canTargetMechs>
-		</targetingParameters>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>VPE_FleshmancerSTNL</path>
-        <level>6</level>
-        <order>2</order>
-        <psyfocusCost>0.10</psyfocusCost>
-        <entropyGain>70</entropyGain>
-        <prerequisites>
-          <li>VPE_MitosisSTNL</li>
-        </prerequisites>
-      </li>
-      <li Class="VEF.Abilities.AbilityExtension_Hediff">
-        <hediff>SustenanceSTNL</hediff>
-      </li>
-	  <li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosionTiny</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>1</scale>
-</li>
-    </modExtensions>
-  </VEF.Abilities.AbilityDef>
-  
-   <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>VPE_MutationFleshSTNL</defName>
-    <label>Organ Mutation</label>
-    <description>Alters a random organ within the target to turn it into its fleshmass counterpart. The process will induce blood loss in the target.</description>
-    <iconPath>UI_Fleshmancer/Abilities/MutationTwo</iconPath>
-    <castTime>120</castTime>
-    <targetMode>Pawn</targetMode>
-    <range>14</range>
-	<needsTicking>true</needsTicking>
-<abilityClass>VPEFLESHSTNL.Ability_Fleshpart</abilityClass>
-    <castSound>MeatExplosionNormal</castSound>
-	<targetingParameters>
-			<canTargetLocations>False</canTargetLocations>
-			<canTargetSelf>True</canTargetSelf>
-			<canTargetAnimals>True</canTargetAnimals>
-			<canTargetPawns>True</canTargetPawns>
-			<canTargetHumans>True</canTargetHumans>
-			<canTargetMechs>false</canTargetMechs>
-		</targetingParameters>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>VPE_FleshmancerSTNL</path>
-        <level>6</level>
-        <order>3</order>
-        <psyfocusCost>0.05</psyfocusCost>
-        <entropyGain>75</entropyGain>
-        <prerequisites>
-          <li>VPE_SustenanceTNL</li>
-        </prerequisites>
-      </li>
-	  <li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosionTiny</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>1</scale>
-</li>
-    </modExtensions>
-  </VEF.Abilities.AbilityDef>
-  
-  
- <ThingDef ParentName="BuildingNaturalBase">
-<defName>FleshmassSuperHiveSTNL</defName>
-<label>Fleshmass Super Hive</label>
-<description>A hive of giant creatures of flesh. It will spawn Bulbfreaks over time.</description>
-<thingClass>Hive</thingClass>
-	<graphicData>
-<texPath>UI_Fleshmancer/Abilities/Superhive</texPath>
-<graphicClass>Graphic_Single</graphicClass>
-<drawSize>5</drawSize>
-</graphicData>
-<size>(5,5)</size>
-<uiIconScale>0.65</uiIconScale>
-    <destroyable>true</destroyable>
-    <preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
-<altitudeLayer>Building</altitudeLayer>
-<rotatable>false</rotatable>
-<fillPercent>0.5</fillPercent>
-<statBases>
-<MaxHitPoints>130</MaxHitPoints>
-<Flammability>1.0</Flammability>
-</statBases>
-<receivesSignals>true</receivesSignals>
-<tickerType>Normal</tickerType>
-<building>
-      <isEdifice>true</isEdifice>
-      <isInert>true</isInert>
-      <isTargetable>true</isTargetable>
-      <claimable>true</claimable>
-      <canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
-      <deconstructible>true</deconstructible>
-    </building>
-<pathCost>42</pathCost>
-<blockWind>true</blockWind>
-<passability>PassThroughOnly</passability>
-<comps>
-<li Class="CompProperties_CanBeDormant">
-<startsDormant>true</startsDormant>
-<canWakeUpFogged>false</canWakeUpFogged>
-</li>
-<li Class="CompProperties_WakeUpDormant"/>
-      <li Class="CompProperties_LeaveFilthOnDestroyed">
-        <filthDef>Filth_LooseGround</filthDef>
-        <thickness>2</thickness>
-      </li>
-	  <li Class="CompProperties_SpawnerPawn">
-<spawnablePawnKinds>
-<li>Bulbfreak</li>
-</spawnablePawnKinds>
-<lordJob>LordJob_AssaultColony</lordJob>
-<shouldJoinParentLord>True</shouldJoinParentLord>
-<spawnSound>MeatExplosionSmall</spawnSound>
-<initialPawnsPoints>200</initialPawnsPoints>
-<maxSpawnedPawnsPoints>1500</maxSpawnedPawnsPoints>
-</li>
-    </comps>
-</ThingDef>
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-<defName>FleshmassSuperHiveSMNSTNL</defName>
-<label>Form Super Flesh Hive</label>
-<description>Use biomass located in the deep layers of the Rim to form a hive of Bulbfreaks.</description>
-<iconPath>UI_Fleshmancer/Abilities/Superhive</iconPath>
-<castTime>15</castTime>
-<range>6.9</range>
-<targetMode>Location</targetMode>
-<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
-<needsTicking>true</needsTicking>
-<chance>0</chance>
-<modExtensions>
-<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-<path>VPE_FleshmancerSTNL</path>
-<level>7</level>
-<order>2</order>
-<psyfocusCost>0.17</psyfocusCost>
-<entropyGain>95</entropyGain>
-<prerequisites>
-<li>VPE_SustenanceTNL</li>
-</prerequisites>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_Building">
-<building>FleshmassSuperHiveSTNL</building>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>MeatExplosion</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>1</scale>
-</li>
-</modExtensions>
-</VEF.Abilities.AbilityDef>	
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_FleshmancerSTNL</path>
+				<level>7</level>
+				<order>1</order>
+				<psyfocusCost>0.30</psyfocusCost>
+				<entropyGain>250</entropyGain>
+				<prerequisites>
+					<li>VPE_Fleshshaper_Ability_Assimilate_STNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>MeatExplosionLarge</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
 </Defs>

@@ -1,0 +1,249 @@
+<Defs>
+	<!-- Regenerator -->
+	<ThingDef ParentName="DrugPillBase">
+		<defName>FleshmassHealnodeSTNL</defName>
+		<label>Fleshmass Regenerator</label>
+		<description>A mini-fleshmass heart, can be consumed to obtain strong regenerative capabilities for a day.</description>
+		<descriptionHyperlinks>
+			<HediffDef>TempregenerationSTNL</HediffDef>
+		</descriptionHyperlinks>
+		<graphicData>
+			<texPath>Item/Fleshmass</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MarketValue>70</MarketValue>
+			<Mass>0.01</Mass>
+		</statBases>
+		<recipeMaker>
+			<recipeUsers>
+</recipeUsers>
+			<workSpeedStat>DrugCookingSpeed</workSpeedStat>
+			<workSkill>Cooking</workSkill>
+			<displayPriority>104</displayPriority>
+		</recipeMaker>
+		<costList>
+			<InsectJelly>4</InsectJelly>
+		</costList>
+		<techLevel>Ultra</techLevel>
+		<minRewardCount>10</minRewardCount>
+		<ingestible>
+			<preferability>NeverForNutrition</preferability>
+			<!-- <drugCategory>Medical</drugCategory> -->
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>TempregenerationSTNL</hediffDef>
+					<severity>1</severity>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<tradeability>None</tradeability>
+		<allowedArchonexusCount>50</allowedArchonexusCount>
+	</ThingDef>
+	<RecipeDef>
+		<defName>VPE_Fleshshaper_ImplantRegenerator_STNL</defName>
+		<label>Implant regenerator</label>
+		<description>Implant a fleshmass regenerator into the target.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FleshmassHealnodeSTNL</ThingDef>
+		</descriptionHyperlinks>
+		<jobString>Implanting regenerator.</jobString>
+		<workerClass>VPE_Fleshmass.Recipe_ImplantFleshmass</workerClass>
+		<deathOnFailedSurgeryChance>0</deathOnFailedSurgeryChance>
+		<anesthetize>False</anesthetize>
+		<workAmount>600</workAmount>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
+		<surgeryOutcomeEffect IsNull="True"/>
+		<targetsBodyPart>false</targetsBodyPart>
+		<skillRequirements>
+			<Medicine>0</Medicine>
+		</skillRequirements>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FleshmassHealnodeSTNL</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FleshmassHealnodeSTNL</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<!-- <appliedOnFixedBodyParts> -->
+		<!-- <li>Brain</li> -->
+		<!-- </appliedOnFixedBodyParts> -->
+	</RecipeDef>
+	<!-- Meatnode -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>MeatNodeSTNL</defName>
+		<label>Meat Node</label>
+		<description>Periodically spews out twisted meat.</description>
+		<graphicData>
+			<graphicClass>Graphic_Random</graphicClass>
+			<texPath>Things/Building/Fleshmass/Fleshsack</texPath>
+			<drawSize>2</drawSize>
+			<drawOffset>(0, 0.02, 0)</drawOffset>
+			<damageData>
+				<rect>(0.3, 0.3, 1.4, 1.4)</rect>
+				<scratches>
+					<li>Damage/FleshScratch1</li>
+					<li>Damage/FleshScratch2</li>
+					<li>Damage/FleshScratch3</li>
+				</scratches>
+			</damageData>
+		</graphicData>
+		<soundImpactDefault>Fleshmass_Damaged</soundImpactDefault>
+		<comps>
+			<li Class="CompProperties_Spawner">
+				<requiresPower>false</requiresPower>
+				<thingToSpawn>Meat_Twisted</thingToSpawn>
+				<spawnCount>50</spawnCount>
+				<spawnIntervalRange>
+					<min>130000</min>
+					<max>130000</max>
+				</spawnIntervalRange>
+				<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+				<showMessageIfOwned>true</showMessageIfOwned>
+			</li>
+		</comps>
+		<altitudeLayer>Building</altitudeLayer>
+		<statBases>
+			<MarketValue>1500</MarketValue>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Beauty>-10</Beauty>
+			<Mass>35</Mass>
+			<WorkToBuild>1000</WorkToBuild>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(2, 2)</size>
+		<fillPercent>1.0</fillPercent>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<passability>Impassable</passability>
+		<rotatable>false</rotatable>
+		<canOverlapZones>false</canOverlapZones>
+		<tradeability>Sellable</tradeability>
+	</ThingDef>
+	<!-- Hives -->
+	<ThingDef ParentName="BuildingNaturalBase">
+		<defName>FleshmassHiveSTNL</defName>
+		<label>Fleshmass Hive</label>
+		<description>A hive of giant creatures of flesh. It will spawn Fleshbeasts over time.</description>
+		<thingClass>Hive</thingClass>
+		<graphicData>
+			<texPath>Building/Fleshmass_Hive</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<size>(2,2)</size>
+		<uiIconScale>0.65</uiIconScale>
+		<destroyable>true</destroyable>
+		<preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<fillPercent>0.5</fillPercent>
+		<statBases>
+			<MaxHitPoints>130</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<receivesSignals>true</receivesSignals>
+		<tickerType>Normal</tickerType>
+		<building>
+			<isEdifice>true</isEdifice>
+			<isInert>true</isInert>
+			<isTargetable>true</isTargetable>
+			<claimable>true</claimable>
+			<canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
+			<deconstructible>true</deconstructible>
+		</building>
+		<pathCost>42</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<comps>
+			<li Class="CompProperties_CanBeDormant">
+				<startsDormant>true</startsDormant>
+				<canWakeUpFogged>false</canWakeUpFogged>
+			</li>
+			<li Class="CompProperties_WakeUpDormant"/>
+			<li Class="CompProperties_LeaveFilthOnDestroyed">
+				<filthDef>Filth_LooseGround</filthDef>
+				<thickness>2</thickness>
+			</li>
+			<li Class="CompProperties_SpawnerPawn">
+				<spawnablePawnKinds>
+					<li>Fingerspike</li>
+					<li>Toughspike</li>
+					<li>Trispike</li>
+				</spawnablePawnKinds>
+				<lordJob>LordJob_AssaultColony</lordJob>
+				<shouldJoinParentLord>True</shouldJoinParentLord>
+				<spawnSound>MeatExplosionSmall</spawnSound>
+				<initialPawnsPoints>200</initialPawnsPoints>
+				<maxSpawnedPawnsPoints>500</maxSpawnedPawnsPoints>
+			</li>
+		</comps>
+	</ThingDef>
+	<ThingDef ParentName="BuildingNaturalBase">
+		<defName>FleshmassSuperHiveSTNL</defName>
+		<label>Fleshmass Super Hive</label>
+		<description>A hive of giant creatures of flesh. It will spawn Bulbfreaks over time.</description>
+		<thingClass>Hive</thingClass>
+		<graphicData>
+			<texPath>UI_Fleshmancer/Abilities/Superhive</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>5</drawSize>
+		</graphicData>
+		<size>(5,5)</size>
+		<uiIconScale>0.65</uiIconScale>
+		<destroyable>true</destroyable>
+		<preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<fillPercent>0.5</fillPercent>
+		<statBases>
+			<MaxHitPoints>130</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<receivesSignals>true</receivesSignals>
+		<tickerType>Normal</tickerType>
+		<building>
+			<isEdifice>true</isEdifice>
+			<isInert>true</isInert>
+			<isTargetable>true</isTargetable>
+			<claimable>true</claimable>
+			<canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
+			<deconstructible>true</deconstructible>
+		</building>
+		<pathCost>42</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<comps>
+			<li Class="CompProperties_CanBeDormant">
+				<startsDormant>true</startsDormant>
+				<canWakeUpFogged>false</canWakeUpFogged>
+			</li>
+			<li Class="CompProperties_WakeUpDormant"/>
+			<li Class="CompProperties_LeaveFilthOnDestroyed">
+				<filthDef>Filth_LooseGround</filthDef>
+				<thickness>2</thickness>
+			</li>
+			<li Class="CompProperties_SpawnerPawn">
+				<spawnablePawnKinds>
+					<li>Bulbfreak</li>
+				</spawnablePawnKinds>
+				<lordJob>LordJob_AssaultColony</lordJob>
+				<shouldJoinParentLord>True</shouldJoinParentLord>
+				<spawnSound>MeatExplosionSmall</spawnSound>
+				<initialPawnsPoints>200</initialPawnsPoints>
+				<maxSpawnedPawnsPoints>1500</maxSpawnedPawnsPoints>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>

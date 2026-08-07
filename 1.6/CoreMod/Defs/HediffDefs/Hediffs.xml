@@ -1,52 +1,100 @@
 <Defs>
- 
-  <HediffDef>
-	<hediffClass>HediffWithComps</hediffClass>
-	<defaultLabelColor>(1.0, 0, 0)</defaultLabelColor>
-      <defName>FleshregenerationSTNL</defName>
-      <label>Slow Regeneration</label>
-      <description>This creature's metabolism has been altered by a fleshshaper, granting them a slow regenerative capability.</description>
-      <descriptionShort>This creature's metabolism has been altered by a fleshshaper, granting them a slow regenerative capability.</descriptionShort>
-      <isBad>false</isBad>
-      <stages>
-        <li>
-		<regeneration>15</regeneration>
-        </li>
-      </stages>
-    </HediffDef>
+	<HediffDef>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1.0, 0, 0)</defaultLabelColor>
+		<defName>FleshregenerationSTNL</defName>
+		<label>Slow Regeneration</label>
+		<description>This creature's metabolism has been altered by a fleshshaper, granting them a slow regenerative capability.</description>
+		<descriptionShort>This creature's metabolism has been altered by a fleshshaper, granting them a slow regenerative capability.</descriptionShort>
+		<isBad>false</isBad>
+		<stages>
+			<li>
+				<regeneration>15</regeneration>
+			</li>
+		</stages>
+	</HediffDef>
 	
 	<HediffDef>
-	<hediffClass>HediffWithComps</hediffClass>
-	<defaultLabelColor>(1.0, 0, 0)</defaultLabelColor>
-      <defName>TempregenerationSTNL</defName>
-      <label>Rapid Regeneration</label>
-      <description>This creature's metabolism has been altered by an absorbed fleshmass heart, granting them a fast but temporary regenerative capability.</description>
-      <descriptionShort>This creature's metabolism has been altered by an absorbed fleshmass heart, granting them a fast but temporary regenerative capability.</descriptionShort>
-      <isBad>false</isBad>
-      <stages>
-        <li>
-		<regeneration>150</regeneration>
-        </li>
-      </stages>
-	  <comps>
-	  <li Class="HediffCompProperties_Disappears">
-          <disappearsAfterTicks>
-            <min>60000</min>
-            <max>60000</max>
-          </disappearsAfterTicks>
-		  <showRemainingTime>True</showRemainingTime>
-        </li>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1.0, 0, 0)</defaultLabelColor>
+		<defName>TempregenerationSTNL</defName>
+		<label>Rapid Regeneration</label>
+		<description>This creature's metabolism has been altered by an absorbed fleshmass heart, granting them a fast but temporary regenerative capability.</description>
+		<descriptionShort>This creature's metabolism has been altered by an absorbed fleshmass heart, granting them a fast but temporary regenerative capability.</descriptionShort>
+		<isBad>false</isBad>
+		<stages>
+			<li>
+				<regeneration>150</regeneration>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>
+					<min>60000</min>
+					<max>60000</max>
+				</disappearsAfterTicks>
+				<showRemainingTime>True</showRemainingTime>
+			</li>
 		</comps>
-    </HediffDef>
-	 
-	 <HediffDef>
-	 <hediffClass>VPEFLESHSTNL.MetabolicEfficiencyHediff</hediffClass>
-	<defaultLabelColor>(1.0, 0, 0)</defaultLabelColor>
-      <defName>SustenanceSTNL</defName>
-      <label>Anomalous Sustenance</label>
-      <description>This creature possesses a fleshmass meat node within their body, this node transforms ambient psychic energy present in the world into nutrients. Effectively negating this creature's need to eat.</description>
-      <descriptionShort>This creature possesses a fleshmass meat node within their body, this node transforms ambient psychic energy present in the world into nutrients. Effectively negating this creature's need to eat.</descriptionShort>
-      <isBad>false</isBad>
-    </HediffDef>
-	 
+	</HediffDef>
+	
+	<HediffDef>
+		<hediffClass>VPEFLESHSTNL.MetabolicEfficiencyHediff</hediffClass>
+		<defaultLabelColor>(1.0, 0, 0)</defaultLabelColor>
+		<defName>SustenanceSTNL</defName>
+		<label>Anomalous Sustenance</label>
+		<description>This creature possesses a fleshmass meat node within their body, this node transforms ambient psychic energy present in the world into nutrients. Effectively negating this creature's need to eat.</description>
+		<descriptionShort>This creature possesses a fleshmass meat node within their body, this node transforms ambient psychic energy present in the world into nutrients. Effectively negating this creature's need to eat.</descriptionShort>
+		<isBad>false</isBad>
+	</HediffDef>
+	
+<HediffDef>
+	<defName>VPE_Fleshshaper_Biomutation_STNL</defName>
+	<label>Biomutation</label>
+	<description>This creature's flesh is rapidly twisting and expanding to inhumane proportions, critical levels will cause this creature to mutate into an entirely different entity.</description>
+	<hediffClass>VPE_Fleshmass.Hediff_Biomutation</hediffClass>
+	<initialSeverity>1</initialSeverity>
+	<minSeverity>0</minSeverity>
+	<maxSeverity>1</maxSeverity>
+	<!-- <lethalSeverity>1</lethalSeverity> -->
+	<defaultLabelColor>(0.8, 0.3, 0.3)</defaultLabelColor>
+	<makesSickThought>true</makesSickThought>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<isBad>true</isBad>
+	<everCurableByItem>false</everCurableByItem>
+	<keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+	<modExtensions>
+		<li Class="VPE_Fleshmass.Biomutation_ModExt">
+			<eligibleFleshbeastKinds>
+				<li>Fingerspike</li>
+				<li>Toughspike</li>
+				<li>Trispike</li>
+				<li>Bulbfreak</li>
+				<!-- <li>Dreadmeld</li> -->
+				<!-- SeedBed -->
+				<li MayRequire="Doop.DreadmeldSeedbed">Homunculus_Bulbfreak</li>
+				<!-- Cat -->
+				<li MayRequire="1013.VK.Zero.zhizhiZZ">Tentaclecat</li>
+				<!-- Carni -->
+				<li MayRequire="muri.carniculus">CarniColonist</li>
+				<li MayRequire="muri.carniculus">CarniMama_colonist</li>
+			</eligibleFleshbeastKinds>
+		</li>
+	</modExtensions>
+	<stages>
+		<li>
+			<regeneration>350</regeneration>
+			<!-- <statFactors> -->
+			<!-- <Fertility>0</Fertility> -->
+			<!-- </statFactors> -->
+		</li>
+	</stages>
+	<comps>
+		<!-- <li Class="HediffCompProperties_DisappearsOnDeath"/> -->
+		<!-- <li Class="HediffCompProperties_Disappears"> -->
+		<!-- <disappearsAfterTicks>20000</disappearsAfterTicks> -->
+		<!-- <showRemainingTime>true</showRemainingTime> -->
+		<!-- </li> -->
+	</comps>
+</HediffDef>
 </Defs>
