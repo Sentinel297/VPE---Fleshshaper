@@ -280,6 +280,7 @@
 		<targetMode>Location</targetMode>
 		<castSound>VPE_Decoy_Cast</castSound>
 		<durationTime>360</durationTime>
+		<showUndrafted>true</showUndrafted>
 		<needsTicking>true</needsTicking>
 		<!-- <chance>0</chance> -->
 		<modExtensions>
