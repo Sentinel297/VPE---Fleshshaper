@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <VanillaPsycastsExpanded.PsycasterPathDef>
+    <defName>VPE_FleshmancerSTNL</defName>
+    <label>Fleshshaper</label>
+    <description>Manipulate the flesh to form a hive and enhance yourself.</description>
+    <background>UI_Fleshmancer/Tree/Fleshtreebase</background>
+    <altBackground>UI_Fleshmancer/Tree/Fleshtreebase</altBackground>
+    <tab>Misc</tab>
+    <tooltip>Manipulate the flesh to form a hive and enhance yourself.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+  
+</Defs>
